@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{shellesc}
+\usepackage{catchfile}
+
+% Command to start manage and thereby the Lean repl
+\newcommand{\startprocess}{%
+  \immediate\write18{bash manager.sh & echo $! > pid}%
+  \immediate\write18{sleep 1} % Give some time for startup
+}
+
+\newcommand{\stopprocess}{%
+  \immediate\write18{kill `cat pid`; rm -f pid}%
+}
+
+% Run axioms.sh, wait, read clean.txt
+\newcommand{\axioms}[1]{%
+  \immediate\write18{bash axioms.sh #1}% run command
+  \immediate\write18{sleep 0.5}% Give some time to respond
+  \input{clean.txt}
+}
+
+\parskip2em
+
+\begin{document}
+
+After this paragraph, we are starting a Lean \verb|repl| process.
+
+\startprocess
+
+\verb|True| depends on: \axioms{True}
+
+\verb|iff_right_comm| depends on: \axioms{iff_right_comm}
+
+\verb|wrong| from \texttt{MyProject/Basic.lean} depends on: \axioms{wrong}
+
+\verb|Nat.beta_unbeta_coe| depends on: \axioms{Nat.beta_unbeta_coe}
+
+Now we stop the process.
+\stopprocess
+Good bye!
+
+\end{document}

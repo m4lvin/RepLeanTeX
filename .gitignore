@@ -1,0 +1,10 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+.lake
+/myProject/lake-manifest.json
+/repl/
+clean.txt
+output.txt
