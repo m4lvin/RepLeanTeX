@@ -11,8 +11,8 @@ clean:
 
 # get repl
 setup:
-	git clone https://github.com/m4lvin/repl
-	cd repl && git checkout v4.9.0-bufferfix && lake build
+	git clone https://github.com/leanprover-community/repl
+	cd repl && git checkout 4fc1e6d1dda170e8f0a6b698dd5f7e17a9cf52b4 && lake build
 	cd myProject && lake exe cache get && lake build
 
 .PHONY: clean default setup
