@@ -5,7 +5,7 @@ default:
 
 clean:
 	rm -rf pipe *.fdb_latexmk *.fls *.log *.aux main.pdf
-	rm -rf output.txt clean.txt pipe other
+	rm -rf output.txt clean.txt pipe other pid
 	rm -rf repl
 	rm -rf myProject/.lake myProject/lake-manifest.json
 
@@ -14,3 +14,5 @@ setup:
 	git clone https://github.com/m4lvin/repl
 	cd repl && git checkout v4.9.0-bufferfix && lake build
 	cd myProject && lake exe cache get && lake build
+
+.PHONY: clean default setup

@@ -26,8 +26,9 @@ MY_PID=$!
 
 printf "Lean repl is running with process: %s\n" $MY_PID
 
-# initialize enviromnent with imports
-(printf "{ \"cmd\" : \" $IMPORTS \" }\n\n") > pipe
+printf "Initializing enviromnent with imports:\n"
+printf "{ \"cmd\" : \" $IMPORTS \" }\n\n"
+printf "{ \"cmd\" : \" $IMPORTS \" }\n\n" > pipe
 
 # Ensure process is terminated when this script exits
 trap "echo cleaning up; kill $MY_PID; rm -f $PIPE_NAME $PIPE_DUMMY $OUTPUT_FILE $CLEAN_FILE" EXIT
