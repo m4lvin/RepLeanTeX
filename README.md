@@ -25,6 +25,9 @@ print the dependencies of its argument:
 Quick start
 -----------
 
+Make sure that you set the same Lean version with `elan default`.
+Currently it is not enough to set it locally.
+
 ```bash
 git clone https://github.com/m4lvin/RepLeanTeX.git
 cd RepLeanTex
