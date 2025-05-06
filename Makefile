@@ -12,7 +12,7 @@ clean:
 # get repl
 setup:
 	git clone https://github.com/leanprover-community/repl
-	cd repl && git checkout v4.14.0 && lake build
+	cd repl && git checkout v4.19.0 && lake build
 	cd myProject && lake exe cache get && lake build
 
 .PHONY: clean default setup
